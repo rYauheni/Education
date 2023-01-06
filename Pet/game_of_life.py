@@ -126,8 +126,6 @@ def valid_repeat(iteration):
         return True
 
 
-
-
 def main():
     create_first_generation()
     print('1:\n', *field, sep='\n')
