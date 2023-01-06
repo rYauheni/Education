@@ -1,6 +1,6 @@
 from random import randint
 
-size = 3
+size = 10
 
 field = [[0 for i in range(size)] for j in range(size)]
 
@@ -29,70 +29,17 @@ def create_next_generation():
 
 def check_neighbors(space, row, col):
     cnt = 0
-    try:
-        neighbor = space[row - 1][col - 1]
-    except IndexError:
-        pass
-    else:
-        if neighbor == 1:
-            cnt += 1
-
-    try:
-        neighbor = space[row - 1][col]
-    except IndexError:
-        pass
-    else:
-        if neighbor == 1:
-            cnt += 1
-
-    try:
-        neighbor = space[row - 1][col + 1]
-    except IndexError:
-        pass
-    else:
-        if neighbor == 1:
-            cnt += 1
-
-    try:
-        neighbor = space[row][col - 1]
-    except IndexError:
-        pass
-    else:
-        if neighbor == 1:
-            cnt += 1
-
-    try:
-        neighbor = space[row][col + 1]
-    except IndexError:
-        pass
-    else:
-        if neighbor == 1:
-            cnt += 1
-
-    try:
-        neighbor = space[row + 1][col - 1]
-    except IndexError:
-        pass
-    else:
-        if neighbor == 1:
-            cnt += 1
-
-    try:
-        neighbor = space[row + 1][col]
-    except IndexError:
-        pass
-    else:
-        if neighbor == 1:
-            cnt += 1
-
-    try:
-        neighbor = space[row + 1][col + 1]
-    except IndexError:
-        pass
-    else:
-        if neighbor == 1:
-            cnt += 1
-
+    row_shifts = [-1, 0, 1]
+    col_shifts = [-1, 0, 1]
+    for rs in row_shifts:
+        for cs in col_shifts:
+            try:
+                neighbor = space[row + rs][col + cs]
+            except IndexError:
+                pass
+            else:
+                if neighbor == 1:
+                    cnt += 1
     return cnt
 
 
